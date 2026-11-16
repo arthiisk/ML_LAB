@@ -1,0 +1,1337 @@
+
+
+| No. | Topic                           | Main concepts                                         |
+| --- | ------------------------------- | ----------------------------------------------------- |
+| 1   | Decision Tree                   | Entropy, Gini, information gain                       |
+| 2   | Support Vector Machine (SVM)    | Hyperplane, margin, kernel                            |
+| 3   | Artificial Neural Network (ANN) | Neurons, weights, activation                          |
+| 4   | Amazon SageMaker                | Cloud ML, training, deployment                        |
+| 5   | K-Nearest Neighbors (KNN)       | Distance, K value, voting                             |
+| 6   | Locally Weighted Regression     | Local fitting, weights, bandwidth                     |
+| 7   | Random Forest                   | Ensemble learning, bagging                            |
+| 8   | Bayesian Network                | Probability, Bayes' theorem, conditional independence |
+| 9   | Anomaly Detection               | Isolation Forest, LOF                                 |
+| 10  | Model Comparison                | Decision Tree vs KNN, SVM vs Random Forest            |
+
+
+
+## **A. Introduction to Machine Learning**
+
+**1. What is Artificial Intelligence?**
+
+Artificial Intelligence is a field of computer science that enables machines to perform tasks that normally require human intelligence, such as reasoning, learning, decision-making and problem-solving.
+
+**2. What is Machine Learning?**
+
+Machine Learning is a subset of AI that enables computers to learn patterns from data and make predictions or decisions without being explicitly programmed for every situation.
+
+Example: An email spam detection system learns from previously classified emails to identify new spam emails.
+
+**3. What is Deep Learning?**
+
+Deep Learning is a subset of Machine Learning that uses multi-layered artificial neural networks to learn complex patterns from large amounts of data.
+
+**4. Difference between AI, ML and DL?**
+
+**Artificial Intelligence**
+
+**Machine Learning**
+
+**Deep Learning**
+
+Deep Learning is part of ML, and ML is part of AI.
+
+**5. What are the three main types of Machine Learning?**
+
+- Supervised Learning: Learns using labelled data.
+- Unsupervised Learning: Finds patterns in unlabelled data.
+- Reinforcement Learning: Learns through rewards and penalties.
+
+**6. What is supervised learning?**
+
+The model learns from input data with known output labels.
+
+Example: Predicting whether a customer will purchase a product.
+
+**7. What is unsupervised learning?**
+
+The model discovers hidden patterns or structures in data without predefined output labels.
+
+Example: Customer segmentation.
+
+**8. What is reinforcement learning?**
+
+An agent learns by interacting with an environment and receiving rewards or penalties.
+
+Example: A robot learning to navigate a room.
+
+## **B. Important ML terminology**
+
+| Term            | Meaning                                 |
+| --------------- | --------------------------------------- |
+| Dataset         | Collection of data                      |
+| Features        | Input variables                         |
+| Target          | Output variable to predict              |
+| Label           | Known output in labelled data           |
+| Model           | Learned mathematical representation     |
+| Training        | Learning from data                      |
+| Testing         | Evaluating on unseen data               |
+| Prediction      | Model's estimated output                |
+| Algorithm       | Procedure used to learn                 |
+| Parameters      | Values learned during training          |
+| Hyperparameters | Settings chosen before training         |
+| Accuracy        | Correct predictions / total predictions |
+
+**9. What are features?**
+
+Features are the input variables used by a machine learning model to make predictions.
+
+Example: For predicting house prices, area, location and number of bedrooms are features.
+
+**10. What is a target variable?**
+
+The target is the output variable that the model tries to predict.
+
+Example: House price.
+
+**11. Difference between classification and regression?**
+
+- Classification predicts categories.
+- Regression predicts continuous numerical values.
+
+Examples:
+
+- Classification: Spam or not spam.
+- Regression: Predicting house prices.
+
+**12. What is labelled data?**
+
+Data containing both input features and their corresponding correct outputs.
+
+**13. What is unlabelled data?**
+
+Data containing input features without predefined output labels.
+
+**14. What is training data?**
+
+The portion of the dataset used to train the model.
+
+**15. What is testing data?**
+
+The portion of data used to evaluate how well the trained model performs on unseen examples.
+
+**16. Why do we split data into training and testing sets?**
+
+To check whether the model can generalize to unseen data rather than simply memorizing training examples.
+
+**17. What is overfitting?**
+
+Overfitting occurs when a model learns the training data too closely, including noise, and performs poorly on unseen data.
+
+**18. What is underfitting?**
+
+Underfitting occurs when a model is too simple to capture important patterns in the dataset.
+
+**19. What is generalization?**
+
+The ability of a model to perform well on new, unseen data.
+
+**20. What is preprocessing?**
+
+Preprocessing means preparing raw data before training by handling missing values, encoding categorical variables, scaling numerical features and removing unwanted data.
+
+## **C. Important mathematical and evaluation concepts**
+
+**21. What is accuracy?**
+
+  Accuracy={TP+TN} / {TP+TN+FP+FN} 
+
+**22. What is precision?**
+
+  Precision={TP}/{TP+FP}
+
+It measures how many predicted positive cases were actually positive.
+
+**23. What is recall?**
+
+  Recall= {TP} / {TP+FN} 
+It measures how many actual positive cases were correctly identified.
+
+**24. What is F1-score?**
+
+The harmonic mean of precision and recall.
+
+ F1=2\times\frac{Precision\times Recall}{Precision+Recall} \\]
+
+**25. What is a confusion matrix?**
+
+A table that compares actual classes with predicted classes.
+
+|                 | Predicted Positive | Predicted Negative |
+| --------------- | ------------------ | ------------------ |
+| Actual Positive | TP                 | FN                 |
+| Actual Negative | FP                 | TN                 |
+
+**26. What is cross-validation?**
+
+A technique used to evaluate a model by splitting data into multiple training and validation folds.
+
+**27. What is feature scaling?**
+
+Bringing numerical features to a comparable scale.
+
+Two common techniques:
+
+- Standardization: Mean 0 and standard deviation 1.
+- Normalization: Often scales values to a range such as 0 to 1.
+
+**28. What is a loss function?**
+
+A function that measures the difference between actual and predicted values.
+
+**29. What is gradient descent?**
+
+An optimization algorithm that updates model parameters in the direction that reduces the loss function.
+
+**30. What is bias-variance trade-off?**
+
+It describes the balance between a model being too simple (high bias) and too sensitive to training data (high variance).
+
+# **Part 3. Algorithm-wise viva questions**
+
+
+**What is a Decision Tree?**
+
+A supervised machine learning algorithm used for classification and regression. It makes decisions by splitting data based on feature values.
+
+Imagine deciding whether to play cricket based on weather:
+
+- Is it raining?
+- Is the temperature suitable?
+- Is the wind strong?
+
+Each question creates a branch.
+
+### **Important concepts**
+
+| Concept          | Explanation                          |
+| ---------------- | ------------------------------------ |
+| Root node        | Starting point of the tree           |
+| Decision node    | Node where a condition is checked    |
+| Branch           | Outcome of a decision                |
+| Leaf node        | Final prediction                     |
+| Entropy          | Measures impurity or uncertainty     |
+| Gini impurity    | Measures how mixed the classes are   |
+| Information gain | Reduction in entropy after splitting |
+| Pruning          | Removing unnecessary branches        |
+
+### **Viva questions and answers**
+
+**1. Is Decision Tree supervised or unsupervised?**
+
+Supervised learning.
+
+**2. Can Decision Tree perform regression?**
+
+Yes. It supports both classification and regression.
+
+**3. What is entropy?**
+
+Entropy measures the uncertainty or impurity in a dataset.
+
+
+**4. What is Gini impurity?**
+
+It measures the probability of incorrectly classifying a randomly selected sample if it is labelled according to the class distribution.
+
+\\[ Gini=1-\sum p_i^2 \\]
+
+**5. What is information gain?**
+
+It measures how much uncertainty is reduced after splitting a dataset.
+
+\\[ IG=Entropy(parent)-WeightedEntropy(children) \\]
+
+**6. Difference between entropy and Gini?**
+
+Both measure impurity. Entropy uses logarithms, whereas Gini uses squared class probabilities.
+
+**7. What is pruning?**
+
+Removing unnecessary branches to reduce overfitting.
+
+**8. What is max_depth?**
+
+It controls the maximum depth of the decision tree.
+
+**9. What happens if max_depth is too large?**
+
+The tree may become complex and overfit the training data.
+
+**10. What are the advantages of Decision Tree?**
+
+- Easy to understand.
+- Requires relatively little preprocessing.
+- Handles numerical and categorical features.
+- Can perform classification and regression.
+
+**11. What are its disadvantages?**
+
+- Can overfit.
+- Sensitive to changes in training data.
+- Can produce unstable trees.
+
+**12. What is the difference between CART and ID3?**
+
+ID3 primarily uses information gain and creates multiway splits. CART uses binary splits and supports classification and regression.
+
+### **Important Python questions**
+
+- `DecisionTreeClassifier()` – creates a classification model.
+- `fit(X_train, y_train)` – trains the model.
+- `predict(X_test)` – predicts outputs.
+- `criterion='gini'` – uses Gini impurity.
+- `criterion='entropy'` – uses entropy.
+- `max_depth` – controls tree depth.
+
+
+  
+**What is SVM?**
+
+Support Vector Machine is a supervised learning algorithm used mainly for classification. It finds the optimal decision boundary that separates different classes.
+
+### **Important concepts**
+
+- Hyperplane: Decision boundary separating classes.
+- Margin: Distance between the hyperplane and nearest data points.
+- Support vectors: Data points closest to the hyperplane.
+- Kernel: Function used to handle nonlinear data.
+- C parameter: Controls the trade-off between margin width and classification errors.
+
+### **Viva questions**
+
+**1. What is SVM?**
+
+A supervised learning algorithm that finds an optimal hyperplane to separate classes.
+
+**2. What is a hyperplane?**
+
+A decision boundary that separates different classes.
+
+**3. What are support vectors?**
+
+The data points closest to the decision boundary that influence its position.
+
+**4. What is margin?**
+
+The distance between the decision boundary and the nearest support vectors.
+
+**5. What is the main objective of SVM?**
+
+To find a hyperplane with the maximum possible margin.
+
+**6. What is the kernel trick?**
+
+It allows SVM to handle nonlinear relationships by implicitly mapping data into a higher-dimensional feature space.
+
+**7. Name four types of kernels.**
+
+- Linear
+- Polynomial
+- RBF (Radial Basis Function)
+- Sigmoid
+
+**8. What is the RBF kernel?**
+
+A kernel that can model nonlinear decision boundaries using distances between data points.
+
+**9. What is the C parameter?**
+
+It controls how strongly the model penalizes classification errors.
+
+- High C: Penalizes errors more, potentially producing a narrower margin.
+- Low C: Allows more errors, often producing a wider margin.
+
+**10. What is gamma?**
+
+Gamma controls the influence of individual training points in RBF, polynomial and sigmoid kernels.
+
+**11. Is SVM suitable for large datasets?**
+
+It can work well, but conventional SVM training can become computationally expensive on very large datasets.
+
+**12. Why is feature scaling important in SVM?**
+
+Because SVM relies on distances and margins, features with larger numerical scales can dominate.
+
+**13. Can SVM perform regression?**
+
+Yes. Its regression version is called Support Vector Regression (SVR).
+
+**14. What is a linear SVM?**
+
+An SVM that separates classes using a linear decision boundary.
+
+**15. What happens if classes overlap?**
+
+SVM can use a soft margin to allow some classification errors.
+
+### **Python concepts**
+
+- `SVC()` – classification.
+- `SVR()` – regression.
+- `kernel='linear'` – linear kernel.
+- `kernel='rbf'` – nonlinear RBF kernel.
+- `C` – regularization parameter.
+- `gamma` – kernel influence parameter.
+- `StandardScaler()` – feature scaling.
+
+## **3. Artificial Neural Network (ANN)**
+
+
+
+**What is ANN?**
+
+An Artificial Neural Network is a machine learning model inspired by the structure of the human brain. It consists of interconnected artificial neurons that learn patterns from data.
+
+### **Important concepts**
+
+| Concept             | Meaning                                 |
+| ------------------- | --------------------------------------- |
+| Input layer         | Receives input features                 |
+| Hidden layer        | Learns patterns                         |
+| Output layer        | Produces prediction                     |
+| Neuron              | Basic processing unit                   |
+| Weight              | Strength of connection                  |
+| Bias                | Additional trainable value              |
+| Activation function | Adds nonlinearity                       |
+| Forward propagation | Calculates predictions                  |
+| Backpropagation     | Calculates gradients                    |
+| Epoch               | One complete pass through training data |
+
+### **Viva questions**
+
+**1. What is a neuron?**
+
+A basic computational unit that receives inputs, applies weights and bias, and passes the result through an activation function.
+
+**2. What is a weight?**
+
+A trainable parameter that determines the importance of an input.
+
+**3. What is bias?**
+
+An additional trainable parameter that shifts the neuron's output.
+
+**4. What is an activation function?**
+
+A function that introduces nonlinearity into a neural network.
+
+**5. Name common activation functions.**
+
+- ReLU
+- Sigmoid
+- Tanh
+- Softmax
+
+**6. What is ReLU?**
+
+\\[ f(x)=\max(0,x) \\]
+
+It outputs zero for negative inputs and the input itself for positive values.
+
+**7. What is sigmoid?**
+
+\\[ f(x)=\frac{1}{1+e^{-x}} \\]
+
+It converts values into a range between 0 and 1.
+
+**8. What is softmax?**
+
+It converts output scores into probabilities that sum to 1, commonly for multiclass classification.
+
+**9. What is forward propagation?**
+
+The process of passing input data through the network to generate predictions.
+
+**10. What is backpropagation?**
+
+The process of calculating gradients of the loss with respect to the network's parameters so that they can be updated.
+
+**11. What is an epoch?**
+
+One complete pass through the entire training dataset.
+
+**12. What is batch size?**
+
+The number of training samples processed before updating model parameters.
+
+**13. What is a learning rate?**
+
+A hyperparameter controlling the size of parameter updates during optimization.
+
+**14. What is vanishing gradient?**
+
+A problem where gradients become extremely small in earlier layers, slowing or preventing learning.
+
+**15. What is dropout?**
+
+A regularization technique that randomly disables some neurons during training to reduce overfitting.
+
+**16. Which optimizer is commonly used?**
+
+Adam, SGD and RMSprop are common optimizers.
+
+**17. Difference between ANN and Deep Learning?**
+
+ANN is the general neural-network model family. Deep Learning uses neural networks with multiple layers to learn complex representations.
+
+## **4. Amazon SageMaker**
+
+[End-to-End ML Training Pipeline on AWS with SageMaker | Ethan Stark posted on the topic | LinkedIn](https://images.openai.com/static-rsc-4/uCokZv3U0pTY-oeHgSCSPi8A-zHBPxMSDLcx4bPpDd1HxymRGNMtzGi98tgje1JL5n8Z2btA1esb0vtkmE-AFzsivtKSR5OTH7D8OwRYlZ2osiUZN9NkQEil25TFiZxDbA2PyzhSDxfkah5AIAjT1kswhl8ioZ0fx_W28unztvM?purpose=inline)
+
+[linkedin.com](https://www.linkedin.com/posts/ethnstrk_ml-training-pipeline-activity-7432081526705643520-cE9C?utm_source=chatgpt.com)
+
+**What is Amazon SageMaker?**
+
+Amazon SageMaker is a cloud-based AWS service used to build, train, tune, deploy and manage machine learning models.
+
+### **Important concepts**
+
+- Cloud computing
+- Data preparation
+- Model training
+- Hyperparameter tuning
+- Model deployment
+- Endpoint
+- Inference
+- Model monitoring
+
+### **Viva questions**
+
+**1. What is cloud computing?**
+
+Delivering computing resources such as servers, storage and software over the internet.
+
+**2. What is Amazon SageMaker?**
+
+An AWS service for developing and deploying machine learning models in the cloud.
+
+**3. Why do we use SageMaker?**
+
+To train and deploy ML models without managing all the underlying infrastructure ourselves.
+
+**4. What is a SageMaker notebook?**
+
+An environment for writing and executing code for machine learning tasks.
+
+**5. What is model training?**
+
+The process of learning patterns from training data.
+
+**6. What is model deployment?**
+
+Making a trained model available for real-world predictions.
+
+**7. What is an endpoint?**
+
+A hosted interface through which an application can send input data and receive model predictions.
+
+**8. What is inference?**
+
+Using a trained model to generate predictions on new data.
+
+**9. What is hyperparameter tuning?**
+
+Finding suitable hyperparameter values to improve model performance.
+
+**10. Difference between training and inference?**
+
+Training learns patterns from data; inference uses those learned patterns to make predictions.
+
+**11. What is cloud storage in AWS?**
+
+Amazon S3 is an object storage service used to store datasets, model artifacts and other files.
+
+**12. What is scalability?**
+
+The ability of a system to handle increasing workloads by adjusting resources.
+
+**13. What is model monitoring?**
+
+Tracking model performance and behaviour after deployment.
+
+**14. Is SageMaker an ML algorithm?**
+
+No. It is a cloud platform/service for the machine learning lifecycle.
+
+## **5. K-Nearest Neighbors (KNN)**
+
+[K-Nearest Neighbors (KNN): A Distance-Based Approach to Prediction | by vishwagna chary sriramoju | Dec, 2025 | Medium](https://images.openai.com/static-rsc-4/E804l5S_GpYalAxuwRFbX8ZFJjWgTRbIuUuZim6a5tM09AKHI_1AJma7LTWVd0yDEECOC31aCl-H2y8QfZrkPbBBbN6nblzYNAf4Vdkh3r3XmtwZhRKFx4YQzsAv_NGmLoyAHmPq717lg7yEgcjVBZle3ge8UCUmsoWkHaovAVU?purpose=inline)
+
+[medium.com](https://medium.com/%40vishwagnachary25/k-nearest-neighbors-knn-a-distance-based-approach-to-prediction-669927611232?utm_source=chatgpt.com)
+
+**What is KNN?**
+
+K-Nearest Neighbors is a supervised learning algorithm that predicts the class of a new data point based on the classes of its K closest training samples.
+
+### **Important concepts**
+
+- K value
+- Euclidean distance
+- Manhattan distance
+- Nearest neighbors
+- Majority voting
+- Distance weighting
+- Feature scaling
+
+### **Viva questions**
+
+**1. What is KNN?**
+
+A supervised learning algorithm that uses the nearest training samples to make predictions.
+
+**2. Is KNN classification or regression?**
+
+Both.
+
+**3. What does K represent?**
+
+The number of nearest neighbors considered for prediction.
+
+**4. How does KNN work?**
+
+1. Select K.
+2. Calculate distances.
+3. Identify nearest neighbors.
+4. For classification, use majority voting.
+5. For regression, usually take the average of neighboring target values.
+
+**5. What is Euclidean distance?**
+
+The straight-line distance between two points.
+
+\\[ d=\sqrt{\sum\_{i=1}^{n}(x_i-y_i)^2} \\]
+
+**6. What is Manhattan distance?**
+
+The sum of absolute differences between coordinates.
+
+\\[ d=\sum\_{i=1}^{n}|x_i-y_i| \\]
+
+**7. What happens if K = 1?**
+
+Prediction depends on the single nearest neighbor, making it sensitive to noise.
+
+**8. What happens if K is too large?**
+
+The model may become too generalized and may misclassify points from nearby classes.
+
+**9. Why is feature scaling necessary?**
+
+To prevent features with larger numerical ranges from dominating distance calculations.
+
+**10. Is KNN a lazy learner?**
+
+Yes. It stores training data and performs most of its computation during prediction.
+
+**11. Why is KNN called non-parametric?**
+
+It does not assume a fixed mathematical form or a predefined number of parameters for the underlying data distribution.
+
+**12. What are the disadvantages of KNN?**
+
+- Slow prediction on large datasets.
+- Sensitive to feature scaling.
+- Sensitive to irrelevant features.
+- Performance depends on K.
+
+**13. How do we choose K?**
+
+Using validation or cross-validation to find a value that performs well.
+
+**14. What is weighted KNN?**
+
+A variation where closer neighbors receive more influence than farther neighbors.
+
+### **Python concepts**
+
+- `KNeighborsClassifier()`
+- `KNeighborsRegressor()`
+- `n_neighbors=5`
+- `metric='euclidean'`
+- `weights='distance'`
+
+## **6. Locally Weighted Regression (LWR)**
+
+[Local linear regression — STATS 202](https://images.openai.com/static-rsc-4/ipYl4zS4WO9iNnM3N2Ul1wkXyYkSaJaxMK6NMH9GxNX0KWCGAhNZU3_lIZngG2p_wbRkRCI0lHZ79Spp8tw76nPthvfwZFp1ENOP4Wr7YEdxJuaFtbowfHLP89_mBdB-VExA1cSEXYMUBL5cfTPJsONFhmpedrA2XNHHTvKI894?purpose=inline)
+
+[web.stanford.edu](https://web.stanford.edu/class/stats202/notes/Nonlinear/Local-regression.html?utm_source=chatgpt.com)
+
+**What is Locally Weighted Regression?**
+
+LWR is a non-parametric regression technique that fits a local model around each query point by giving greater importance to nearby training samples.
+
+### **Important concepts**
+
+- Local regression
+- Query point
+- Weighting function
+- Gaussian kernel
+- Bandwidth
+- Distance-based weights
+- Non-parametric learning
+
+### **Viva questions**
+
+**1. What is LWR?**
+
+A regression technique that fits a model locally around the point where a prediction is required.
+
+**2. Why is it called locally weighted regression?**
+
+Because nearby data points receive higher weights than distant points.
+
+**3. Is LWR parametric or non-parametric?**
+
+Non-parametric.
+
+**4. What is a weighting function?**
+
+A function that assigns importance to each training sample based on its distance from the query point.
+
+**5. What is bandwidth?**
+
+A parameter that controls how quickly the influence of data points decreases with distance.
+
+**6. What happens when bandwidth is small?**
+
+Only nearby points have significant influence. The model may become sensitive to noise.
+
+**7. What happens when bandwidth is large?**
+
+More points influence the prediction, making the fitted model smoother.
+
+**8. Is LWR the same as ordinary linear regression?**
+
+No. Ordinary linear regression fits a global model, while LWR fits local models for individual query points.
+
+**9. What is a Gaussian kernel?**
+
+A weighting function that gives higher weights to nearby points and lower weights to distant points.
+
+**10. What is the main disadvantage of LWR?**
+
+It can be computationally expensive because a local model must be fitted for each query point.
+
+**11. Can LWR model nonlinear relationships?**
+
+Yes, by fitting different local models across the input space.
+
+**12. Is LWR suitable for large datasets?**
+
+It may be expensive for large datasets because prediction requires distance calculations and local fitting.
+
+## **7. Random Forest**
+
+[Exploring the Power of Random Forest: From Decision Trees to Ensemble Methods](https://images.openai.com/static-rsc-4/gxlQhjGIIGBXaF2mzrFlYPKnASFrehhCDDfmbJoMfKJer1ci1QW3awJ1-MiHe9dsyCbW3gtgdDeESwKw2MMps9Jw2VR1Znu6yEdpeYfiNQJQNO0_aVMsqmj2ED0gAbGdvw00zZhjoMeXgP0ReM1xIgojbJmIWybIQCL0_kzLG08?purpose=inline)
+
+[linkedin.com](https://www.linkedin.com/pulse/exploring-power-random-forest-from-decision-trees-ensemble-pandey?utm_source=chatgpt.com)
+
+**What is Random Forest?**
+
+Random Forest is a supervised ensemble learning algorithm that combines multiple decision trees to improve prediction performance and reduce overfitting compared with an individual tree in many cases.
+
+
+### **Viva questions**
+
+**1. What is Random Forest?**
+
+An ensemble algorithm that combines multiple decision trees.
+
+**2. What is ensemble learning?**
+
+Combining multiple models to produce a stronger overall prediction.
+
+**3. What is bagging?**
+
+Bootstrap aggregating. It trains multiple models on different bootstrap samples and combines their predictions.
+
+**4. What is bootstrap sampling?**
+
+Randomly selecting training samples with replacement.
+
+**5. Why is it called Random Forest?**
+
+Because it builds a collection of decision trees using random samples and random subsets of features.
+
+**6. How does Random Forest make predictions?**
+
+- Classification: Majority voting.
+- Regression: Averaging the predictions.
+
+**7. How does Random Forest reduce overfitting?**
+
+Combining diverse trees reduces the influence of individual tree errors and often lowers variance.
+
+**8. What is feature importance?**
+
+A measure of how much a feature contributes to the predictions made by the model.
+
+**9. What is n_estimators?**
+
+The number of trees in the forest.
+
+**10. What happens when n_estimators increases?**
+
+It may improve stability and performance, but increases computational cost and eventually gives diminishing returns.
+
+**11. Difference between Decision Tree and Random Forest?**
+
+Decision Tree uses one tree; Random Forest combines multiple trees.
+
+**12. Can Random Forest perform regression?**
+
+Yes, using `RandomForestRegressor`.
+
+**13. What is out-of-bag (OOB) evaluation?**
+
+It evaluates predictions using samples that were not selected in a particular tree's bootstrap sample.
+
+**14. What is the main disadvantage of Random Forest?**
+
+It is less interpretable and often more computationally expensive than an individual decision tree.
+
+### **Python concepts**
+
+- `RandomForestClassifier()`
+- `RandomForestRegressor()`
+- `n_estimators=100`
+- `max_depth`
+- `random_state`
+- `feature_importances_`
+
+## **8. Bayesian Network**
+
+[Homework 1 |](https://images.openai.com/static-rsc-4/UJuL38FRKJhxV-CJeg86vRy9OpiLWOF4_j6zbF4yvTNRBkKz0qUX5n4JPUduOMZCsVnnfrxVAN7O-I41zgWC_AbIrnKXUC4NJ0PoBQl-scfDhSyL953x20R6rIJ0PF6XmG7I2clTiOZl5P3uyOnmBEJ-Pci_9Syzaiy2PdMUxHo?purpose=inline)
+
+[cs.ubc.ca](https://www.cs.ubc.ca/~fwood/CS532W-539W/homework/1.html?utm_source=chatgpt.com)
+
+**What is a Bayesian Network?**
+
+A Bayesian Network is a probabilistic graphical model that represents relationships between random variables using a directed acyclic graph (DAG).
+
+### **Important concepts**
+
+- Probability
+- Conditional probability
+- Bayes' theorem
+- Directed graph
+- Nodes
+- Directed edges
+- Conditional Probability Tables (CPT)
+- Conditional independence
+- DAG
+
+### **Viva questions**
+
+**1. What is a Bayesian Network?**
+
+A probabilistic model that represents dependencies between variables using a directed acyclic graph.
+
+**2. What is a node?**
+
+A node represents a random variable.
+
+**3. What is an edge?**
+
+A directed edge represents a direct dependency relationship between variables.
+
+**4. What is a DAG?**
+
+A Directed Acyclic Graph is a directed graph that contains no directed cycles.
+
+**5. What is conditional probability?**
+
+The probability of an event occurring given that another event has already occurred.
+
+\\[ P(A|B)=\frac{P(A\cap B)}{P(B)} \\]
+
+**6. State Bayes' theorem.**
+
+\\[ P(A|B)=\frac{P(B|A)P(A)}{P(B)} \\]
+
+**7. What is prior probability?**
+
+The probability of a hypothesis before observing new evidence.
+
+**8. What is posterior probability?**
+
+The updated probability of a hypothesis after considering evidence.
+
+**9. What is likelihood?**
+
+The probability of observing the evidence under a particular hypothesis.
+
+**10. What is a Conditional Probability Table?**
+
+A table that specifies the probability distribution of a variable given its parent variables.
+
+**11. What is conditional independence?**
+
+Two variables are conditionally independent if knowing one does not provide additional information about the other once the conditioning variables are known.
+
+**12. What is the advantage of Bayesian Networks?**
+
+They represent uncertainty and relationships between variables in an understandable graphical form.
+
+**13. What is the disadvantage?**
+
+Building the network structure and estimating probabilities can become difficult for complex problems.
+
+**14. Give a real-world application.**
+
+Medical diagnosis, risk assessment and fault detection.
+
+## **9. Anomaly Detection — Isolation Forest and LOF**
+
+[Anomaly Detection in Python — Part 2; Multivariate Unsupervised Methods and Code | by Nitish Kumar Thakur | TDS Archive | Medium](https://images.openai.com/static-rsc-4/LlHOdaeJSuG_Q8ucXx3SgMb3l-57RFGF3LC2Uw82SBMvnfTaWW2jjPkwCCMEGCnGC1VSqau-h1MEpT7XSSmy0d6uOcMpNBZCrSsAZ4twl3J4tgRtmQDrvBbBqrMgNMnnxntByudlGFxlozZU-zzE7AK1ONG2a-bqsuJ5KCtqGas?purpose=inline)
+
+[medium.com](https://medium.com/data-science/anomaly-detection-in-python-part-2-multivariate-unsupervised-methods-and-code-b311a63f298b?utm_source=chatgpt.com)
+
+[Credit Card Fraud Detection Project using Machine Learning](https://images.openai.com/static-rsc-4/7v-qBzqF4bYgiI-s56T9rY33lObmJyjUvx7t_Er-vJvRWwa8CUJfYdxF1jo0jC1KUJTL2TyrMNEHvsedquSPYcV4t34aKxHZcwujGf57XxfmEHBMwCHV_xxXkHcvM43oMEw0-4zGyXN_TPCEyq_XfZyVZuX9BfmrW7WUd96wDpI?purpose=inline)
+
+[projectpro.io](https://www.projectpro.io/article/credit-card-fraud-detection-project-with-source-code-in-python/568?utm_source=chatgpt.com)
+
+**What is Anomaly Detection?**
+
+Anomaly detection is the process of identifying data points that differ significantly from normal patterns.
+
+Examples:
+
+- Credit card fraud.
+- Network intrusion.
+- Unusual bank transactions.
+- Equipment failure.
+
+### **A. Isolation Forest**
+
+**1. What is Isolation Forest?**
+
+An unsupervised anomaly detection algorithm that identifies unusual data points by isolating them through random feature selection and random split values.
+
+**2. Why are anomalies easier to isolate?**
+
+They are often rare and different from normal observations, so fewer random splits may isolate them.
+
+**3. What is an isolation tree?**
+
+A tree that recursively splits data until observations become isolated.
+
+**4. What is path length?**
+
+The number of splits required to isolate a data point.
+
+**5. What is contamination?**
+
+An estimated proportion of anomalies in the dataset used to set the decision threshold.
+
+**6. What is the difference between normal points and anomalies in Isolation Forest?**
+
+Anomalies generally have shorter average path lengths than normal observations.
+
+**7. Is Isolation Forest supervised or unsupervised?**
+
+It is commonly used as an unsupervised anomaly detection algorithm.
+
+**8. What does&#x20;**`predict()`**&#x20;return?**
+
+Typically:
+
+- `1`: Normal observation.
+- `-1`: Anomaly.
+
+### **B. Local Outlier Factor (LOF)**
+
+**9. What is LOF?**
+
+Local Outlier Factor identifies anomalies by comparing the local density of a data point with the local densities of its neighbors.
+
+**10. What is local density?**
+
+How closely data points are concentrated in a particular region.
+
+**11. What is n_neighbors in LOF?**
+
+The number of neighboring observations used to calculate local density.
+
+**12. How does LOF identify anomalies?**
+
+A point with significantly lower local density than its neighbors is considered an anomaly.
+
+**13. Difference between Isolation Forest and LOF?**
+
+| Isolation Forest                                              | LOF                          |
+| ------------------------------------------------------------- | ---------------------------- |
+| Uses random isolation trees                                   | Uses local density           |
+| Based on isolation difficulty                                 | Based on density difference  |
+| Good for many large datasets                                  | Useful for local outliers    |
+| Does not depend on nearest-neighbor distances in the same way | Depends on nearest neighbors |
+
+**14. Can LOF detect local anomalies?**
+
+Yes. That is one of its main strengths.
+
+**15. Why is feature scaling important in LOF?**
+
+Because LOF uses distance calculations, and features with larger scales can dominate the distance.
+
+## **10. Model Comparison**
+
+This topic is especially important because your practical question set includes direct comparisons.
+
+### **Decision Tree vs KNN**
+
+| Decision Tree                   | KNN                                    |
+| ------------------------------- | -------------------------------------- |
+| Tree-based model                | Distance-based model                   |
+| Learns decision rules           | Uses nearest neighbors                 |
+| Usually fast prediction         | Can be slower during prediction        |
+| No distance scaling requirement | Feature scaling is important           |
+| Can overfit deeply              | Sensitive to K and irrelevant features |
+| Easy to interpret               | Less interpretable                     |
+
+### **SVM vs Random Forest**
+
+| SVM                                   | Random Forest                                  |
+| ------------------------------------- | ---------------------------------------------- |
+| Finds optimal separating hyperplane   | Combines multiple decision trees               |
+| Uses kernels for nonlinear boundaries | Learns nonlinear relationships through trees   |
+| Scaling is important                  | Usually does not require scaling               |
+| Can be expensive for large datasets   | Often handles large datasets more conveniently |
+| Sensitive to kernel and C settings    | Sensitive to tree-related hyperparameters      |
+| Less directly interpretable           | Can provide feature importance                 |
+
+### **Viva questions**
+
+**1. Which is better, Decision Tree or KNN?**
+
+There is no universally better algorithm. The choice depends on dataset characteristics and evaluation results.
+
+**2. Which algorithm requires feature scaling: SVM or Random Forest?**
+
+SVM generally requires feature scaling. Random Forest usually does not.
+
+**3. Which algorithm is easier to interpret?**
+
+A small Decision Tree is generally easier to interpret.
+
+**4. Which algorithm is lazy learning?**
+
+KNN.
+
+**5. Which algorithm uses ensemble learning?**
+
+Random Forest.
+
+**6. Which algorithm uses a hyperplane?**
+
+SVM.
+
+**7. Which algorithm uses majority voting among trees?**
+
+Random Forest.
+
+**8. Which algorithm is based on nearest-neighbor distances?**
+
+KNN and LOF.
+
+**9. Which algorithm is useful for nonlinear classification?**
+
+SVM with an appropriate nonlinear kernel, Decision Tree, Random Forest and other nonlinear models can all handle nonlinear patterns.
+
+**10. How do you select the best model?**
+
+By comparing evaluation metrics on appropriate validation or test data, considering the problem requirements and avoiding data leakage.
+
+# **Part 4. Jupyter Notebook practical viva**
+
+Very important for tomorrow
+
+Your examiner may open your notebook and ask you questions directly from your code. These are questions you should be able to answer regardless of which of the 10 algorithms you implement.
+
+## **A. Dataset handling**
+
+**1. What is a dataset?**
+
+A collection of data arranged in rows and columns.
+
+**2. What is Pandas?**
+
+A Python library used for data manipulation and analysis.
+
+**3. What is NumPy?**
+
+A Python library used for numerical computations and working with arrays.
+
+**4. What is Matplotlib?**
+
+A Python library used for data visualization.
+
+**5. What is Seaborn?**
+
+A Python library used for statistical data visualization.
+
+**6. How do you read a CSV file?**
+
+```
+import pandas as pddf = pd.read_csv("data.csv")
+```
+
+**7. How do you display the first five rows?**
+
+```
+df.head()
+```
+
+**8. How do you check the number of rows and columns?**
+
+```
+df.shape
+```
+
+**9. How do you check column names and data types?**
+
+```
+df.info()
+```
+
+**10. How do you find missing values?**
+
+```
+df.isnull().sum()
+```
+
+**11. How do you remove missing values?**
+
+```
+df.dropna(inplace=True)
+```
+
+**12. How do you find duplicate rows?**
+
+```
+df.duplicated().sum()
+```
+
+**13. How do you remove duplicates?**
+
+```
+df.drop_duplicates(inplace=True)
+```
+
+## **B. Preparing data**
+
+**14. What is X?**
+
+X represents the independent variables or input features.
+
+**15. What is y?**
+
+y represents the dependent variable or target.
+
+```
+X = df.drop("target", axis=1)y = df["target"]
+```
+
+**16. Why do we use&#x20;**`axis=1`**?**
+
+It specifies that we are operating on columns.
+
+- `axis=0`: Rows.
+- `axis=1`: Columns.
+
+**17. What is train_test_split?**
+
+It divides the dataset into training and testing portions.
+
+```
+from sklearn.model_selection import train_test_splitX_train, X_test, y_train, y_test = train_test_split(    X, y, test_size=0.2, random_state=42)
+```
+
+**18. What does test_size=0.2 mean?**
+
+20% of the dataset is used for testing and 80% for training.
+
+**19. What is random_state?**
+
+It ensures reproducibility by using the same random split when the code is run again.
+
+**20. What is StandardScaler?**
+
+It standardizes numerical features to approximately zero mean and unit variance.
+
+```
+from sklearn.preprocessing import StandardScalerscaler = StandardScaler()X_train = scaler.fit_transform(X_train)X_test = scaler.transform(X_test)
+```
+
+**21. Why do we use fit_transform on training data but transform on testing data?**
+
+The scaler learns the mean and standard deviation from training data. We reuse those same values to transform testing data and avoid data leakage.
+
+**22. What is Label Encoding?**
+
+Converting categorical labels into numerical values.
+
+Example:
+
+- Yes = 1
+- No = 0
+
+**23. Why do ML algorithms need numerical data?**
+
+Most algorithms perform mathematical operations on input features, so categorical values often need numerical encoding.
+
+## **C. Model training and prediction**
+
+**24. What is scikit-learn?**
+
+A Python library that provides machine learning algorithms, preprocessing tools and evaluation metrics.
+
+**25. What does&#x20;**`fit()`**&#x20;do?**
+
+It trains the model using the provided training data.
+
+**26. What does&#x20;**`predict()`**&#x20;do?**
+
+It generates predictions using a trained model.
+
+**27. What does&#x20;**`model.score()`**&#x20;do?**
+
+For many scikit-learn classifiers, it returns accuracy. For many regressors, it returns the coefficient of determination, R².
+
+**28. What is&#x20;**`y_pred`**?**
+
+The predictions generated by the trained model.
+
+```
+y_pred = model.predict(X_test)
+```
+
+**29. What is&#x20;**`y_test`**?**
+
+The actual target values reserved for testing.
+
+**30. Why do we compare y_test and y_pred?**
+
+To evaluate how accurately the model predicts unseen data.
+
+## **D. Model evaluation**
+
+**31. How do you calculate accuracy?**
+
+```
+from sklearn.metrics import accuracy_scoreaccuracy = accuracy_score(y_test, y_pred)print(accuracy)
+```
+
+**32. How do you generate a confusion matrix?**
+
+```
+from sklearn.metrics import confusion_matrixprint(confusion_matrix(y_test, y_pred))
+```
+
+**33. How do you generate a classification report?**
+
+```
+from sklearn.metrics import classification_reportprint(classification_report(y_test, y_pred))
+```
+
+**34. What is R² score?**
+
+It measures how much variation in the target variable is explained by a regression model.
+
+**35. What is MAE?**
+
+Mean Absolute Error. It measures the average absolute difference between actual and predicted values.
+
+**36. What is MSE?**
+
+Mean Squared Error. It calculates the average squared difference between actual and predicted values.
+
+**37. What is RMSE?**
+
+Root Mean Squared Error. It is the square root of MSE and is expressed in the same units as the target variable.
+
+**38. Can accuracy alone determine whether a model is good?**
+
+No. Precision, recall, F1-score and the problem's requirements must also be considered, especially with imbalanced datasets.
+
+# **Part 5. Tricky viva questions**
+
+These are questions that test whether you understand ML rather than simply memorizing definitions.
+
+| Question                                                     | Correct answer                                                    |
+| ------------------------------------------------------------ | ----------------------------------------------------------------- |
+| Is every AI system a machine learning system?                | No                                                                |
+| Is every ML system a deep learning system?                   | No                                                                |
+| Can ML work without data?                                    | It needs data or experience to learn                              |
+| Is KNN a lazy learner?                                       | Yes                                                               |
+| Is Decision Tree a parametric model?                         | Generally considered non-parametric                               |
+| Is Random Forest an ensemble algorithm?                      | Yes                                                               |
+| Does SVM always use a linear boundary?                       | No                                                                |
+| Does ANN require activation functions?                       | Activation functions are generally used to introduce nonlinearity |
+| Can Decision Tree handle regression?                         | Yes                                                               |
+| Can KNN handle regression?                                   | Yes                                                               |
+| Is Isolation Forest used for anomaly detection?              | Yes                                                               |
+| Does LOF use local density?                                  | Yes                                                               |
+| Does SageMaker represent an ML algorithm?                    | No                                                                |
+| Does training accuracy guarantee good testing accuracy?      | No                                                                |
+| Can a model achieve 100% training accuracy and still be bad? | Yes, due to overfitting                                           |
+| Is high accuracy always good?                                | No, especially with imbalanced data                               |
+| Can an unsupervised algorithm work without target labels?    | Yes                                                               |
+| Is feature scaling equally important for every algorithm?    | No                                                                |
+
+
+**10 algorithms in one sentence**
+
+1. **Decision Tree:** Makes decisions using feature-based splits.
+2. **SVM:** Finds an optimal separating hyperplane.
+3. **ANN:** Learns through interconnected artificial neurons.
+4. **SageMaker:** AWS platform for building and deploying ML models.
+5. **KNN:** Predicts using the nearest data points.
+6. **LWR:** Fits a local regression model using distance-based weights.
+7. **Random Forest:** Combines multiple decision trees.
+8. **Bayesian Network:** Represents probabilistic dependencies using a DAG.
+9. **Isolation Forest:** Detects anomalies using random isolation.
+10. **LOF:** Detects anomalies using local density differences.
+
+    **10 Python functions to remember**
+
+| Function                  | Purpose                |
+| ------------------------- | ---------------------- |
+| `read_csv()`              | Load dataset           |
+| `head()`                  | Display first rows     |
+| `info()`                  | Dataset information    |
+| `isnull()`                | Find missing values    |
+| `drop()`                  | Remove columns or rows |
+| `train_test_split()`      | Split data             |
+| `fit()`                   | Train model            |
+| `predict()`               | Generate predictions   |
+| `accuracy_score()`        | Calculate accuracy     |
+| `classification_report()` | Evaluate classifier    |
+
+**10 mathematical concepts**
+
+- Entropy
+- Gini impurity
+- Information gain
+- Euclidean distance
+- Hyperplane and margin
+- Gradient descent
+- Bayes' theorem
+- Conditional probability
+- Precision and recall
+- Mean Squared Error
+
+
+You can also practise a final 15-minute rapid-fire ML viva with me before your practical tomorrow.
